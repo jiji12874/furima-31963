@@ -30,7 +30,7 @@ Things you may want to cover:
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
 | email              | string              | null: false             |
-| password           | string              | null: false             |
+| encrypted_password | string              | null: false             |
 | password_include   | string              | null: false             |
 | nickname           | string              | null: false             |
 | birth_date         | date                | null: false             |
@@ -41,14 +41,13 @@ Things you may want to cover:
 
 ### Association
 
-* belongs_to :purchase
+* has_many :purchase
 * has_many :items
 
 ## purchase table
 
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
-| purchased_items                     | references | foreign_key: true |
 
 ### Association
 
@@ -58,17 +57,16 @@ Things you may want to cover:
 
 ## items table
 
-| Column      | Type       | Options           |
-|-------------|------------|-------------------|
-| image       | string     | null: false       |
-| name        | string     | null: false       |
-| info        | string     | null: false       |
-| price       | integer    | null: false       |
-| category    | string     | null: false       |
-| sales       | string     | null: false       |
-| shipping    | string     | null: false       |
-| prefecture  | string     | null: false       |
-| scheduled   | string     | null: false       |
+| Column        | Type       | Options           |
+|---------------|------------|-------------------|
+| name          | string     | null: false       |
+| info          | text       | null: false       |
+| price         | integer    | null: false       |
+| category_id   | integer    | null: false       |
+| sale_id       | integer    | null: false       |
+| shipping_id   | integer    | null: false       |
+| prefecture    | integer    | null: false       |
+| scheduled_id  | integer    | null: false       |
 
 ### Association
 
@@ -77,15 +75,18 @@ Things you may want to cover:
 
 ## address table
 
-| Column       | Type       | Options           |
-|--------------|------------|-------------------|
-| token        | string     | null: false       |
-| postal       | string     | null: false       |
-| prefecture   | string     | null: false       |
-| city         | string     | null: false       |
-| prefecture   | string     | null: false       |
-| addresses    | string     | null: false       |
-| phone number | integer    | null: false       |
+| Column         | Type       | Options           |
+|----------------|------------|-------------------|
+| postal         | string     | null: false       |
+| prefecture     | string     | null: false       |
+| city           | string     | null: false       |
+| prefecture     | string     | null: false       |
+| addresses      | string     | null: false       |
+| phone_number   | string     | null: false       |
+| phone_number   | string     | null: false       |
+| building_name  | string     | null: false       |
+| purchase table | string     | foreign_key: true |
+
 
 
 ### Association
