@@ -27,33 +27,35 @@ Things you may want to cover:
 
 ## users table
 
-| Column             | Type                | Options                 |
-|--------------------|---------------------|-------------------------|
-| email              | string              | null: false             |
-| encrypted_password | string              | null: false             |
-| password_include   | string              | null: false             |
-| nickname           | string              | null: false             |
-| birth_date         | date                | null: false             |
-| last_name          | string              | null: false             |
-| first_name         | string              | null: false             |
-| last_name_kana     | string              | null: false             |
-| first_name_kana    | string              | null: false             |
+| Column             | Type                | Options                        |
+|--------------------|---------------------|--------------------------------|
+| email              | string              | null: false ,foreign_key: true |
+| encrypted_password | string              | null: false                    |
+| nickname           | string              | null: false                    |
+| birth_date         | date                | null: false                    |
+| last_name          | string              | null: false                    |
+| first_name         | string              | null: false                    |
+| last_name_kana     | string              | null: false                    |
+| first_name_kana    | string              | null: false                    |
 
 ### Association
 
-* has_many :purchase
+* has_many :purchases
 * has_many :items
 
 ## purchase table
 
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
+| user_id                             | string     | null: false       |
+| item_id                             | string     | null: false       |
+
 
 ### Association
 
-- belongs_to :users
-- belongs_to :items
-- has_one :purchase
+- belongs_to :user
+- belongs_to :item
+- has_one :address
 
 ## items table
 
@@ -65,12 +67,12 @@ Things you may want to cover:
 | category_id   | integer    | null: false       |
 | sale_id       | integer    | null: false       |
 | shipping_id   | integer    | null: false       |
-| prefecture    | integer    | null: false       |
+| prefecture_id | integer    | null: false       |
 | scheduled_id  | integer    | null: false       |
 
 ### Association
 
-- belongs_to :users
+- belongs_to :user
 - has_one :purchase
 
 ## address table
@@ -78,14 +80,12 @@ Things you may want to cover:
 | Column         | Type       | Options           |
 |----------------|------------|-------------------|
 | postal         | string     | null: false       |
-| prefecture     | string     | null: false       |
 | city           | string     | null: false       |
 | prefecture     | string     | null: false       |
 | addresses      | string     | null: false       |
 | phone_number   | string     | null: false       |
-| phone_number   | string     | null: false       |
-| building_name  | string     | null: false       |
-| purchase table | string     | foreign_key: true |
+| building_name  | string     |                   |
+| purchase       | references | foreign_key: true |
 
 
 
