@@ -29,7 +29,7 @@ Things you may want to cover:
 
 | Column             | Type                | Options                        |
 |--------------------|---------------------|--------------------------------|
-| email              | string              | null: false ,foreign_key: true |
+| email              | string              | null: false ,unique: true      |
 | encrypted_password | string              | null: false                    |
 | nickname           | string              | null: false                    |
 | birth_date         | date                | null: false                    |
@@ -47,8 +47,8 @@ Things you may want to cover:
 
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
-| user_id                             | string     | null: false       |
-| item_id                             | string     | null: false       |
+| user_id                             | references | null: false       |
+| item_id                             | references | null: false       |
 
 
 ### Association
@@ -59,16 +59,17 @@ Things you may want to cover:
 
 ## items table
 
-| Column        | Type       | Options           |
-|---------------|------------|-------------------|
-| name          | string     | null: false       |
-| info          | text       | null: false       |
-| price         | integer    | null: false       |
-| category_id   | integer    | null: false       |
-| sale_id       | integer    | null: false       |
-| shipping_id   | integer    | null: false       |
-| prefecture_id | integer    | null: false       |
-| scheduled_id  | integer    | null: false       |
+| Column        | Type       | Options                         |
+|---------------|------------|---------------------------------|
+| user_id       | string     | null: false , foreign_key: true |
+| name          | string     | null: false                     |
+| info          | text       | null: false                     |
+| price         | integer    | null: false                     |
+| category_id   | integer    | null: false                     |
+| sale_id       | integer    | null: false                     |
+| shipping_id   | integer    | null: false                     |
+| prefecture_id | integer    | null: false                     |
+| scheduled_id  | integer    | null: false                     |
 
 ### Association
 
@@ -81,7 +82,7 @@ Things you may want to cover:
 |----------------|------------|-------------------|
 | postal         | string     | null: false       |
 | city           | string     | null: false       |
-| prefecture     | string     | null: false       |
+| prefecture_id  | integer    | null: false       |
 | addresses      | string     | null: false       |
 | phone_number   | string     | null: false       |
 | building_name  | string     |                   |
