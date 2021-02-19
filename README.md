@@ -45,10 +45,10 @@ Things you may want to cover:
 
 ## purchase table
 
-| Column                              | Type       | Options           |
-|-------------------------------------|------------|-------------------|
-| user                                | references | null: false       |
-| item                                | references | null: false       |
+| Column                              | Type       | Options                        |
+|-------------------------------------|------------|--------------------------------|
+| user                                | references | null: false, foreign_key: true |
+| item                                | references | null: false, foreign_key: true |
 
 
 ### Association
