@@ -47,8 +47,8 @@ Things you may want to cover:
 
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
-| user_id                             | references | null: false       |
-| item_id                             | references | null: false       |
+| user                                | references | null: false       |
+| item                                | references | null: false       |
 
 
 ### Association
@@ -61,7 +61,7 @@ Things you may want to cover:
 
 | Column        | Type       | Options                         |
 |---------------|------------|---------------------------------|
-| user_id       | string     | null: false , foreign_key: true |
+| user          | references | null: false , foreign_key: true |
 | name          | string     | null: false                     |
 | info          | text       | null: false                     |
 | price         | integer    | null: false                     |
