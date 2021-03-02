@@ -48,10 +48,41 @@ require 'rails_helper'
       @user.valid?
       expect(@user.errors.full_messages).to include("Password is invalid")
     end
+    it "passwordが全角では登録できない" do
+      @user.password = "aaaaaa"
+      @user.password_confirmation = "aaaaaa"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password is invalid")
+    end
      it "password_confirmationが空では登録できないこと" do
        @user.password_confirmation = ''
        @user.valid?
        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+     end
+     it "birth_dateが空では登録できないこと" do
+      @user.birth_date = ''
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Birth date can't be blank", "Birth date is invalid")
+    end
+     it "漢字・平仮名・カタカナ以外では登録できない" do
+      @user.last_name = "aaaaaa"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Last name is invalid")
+     end
+     it "漢字・平仮名・カタカナ以外では登録できない" do
+      @user.first_name = "aaaaaa"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name is invalid")
+     end
+     it "全角カタカナ以外では登録できない" do
+      @user.last_name_kana = "aaaaaa"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Last name kana is invalid")
+     end
+     it "全角カタカナ以外では登録できない" do
+      @user.first_name_kana = "aaaaaa"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name kana is invalid")
      end
    end
  end
