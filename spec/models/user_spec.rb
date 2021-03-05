@@ -73,7 +73,7 @@ require 'rails_helper'
      it "パスワードは、6文字以上でないと登録できない" do
        @user.password = "123aa"
        @user.valid?
-       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password", "Password is too short (minimum is 6 characters)")
+       expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
      end
      it "passwordが半角英文字なしでは登録できない" do
        @user.password = "123456"
@@ -101,7 +101,7 @@ require 'rails_helper'
      it "birth_dateが空では登録できないこと" do
       @user.birth_date = ''
       @user.valid?
-      expect(@user.errors.full_messages).to include("Birth date can't be blank", "Birth date is invalid")
+      expect(@user.errors.full_messages).to include("Birth date can't be blank")
      end
      it "漢字・平仮名・カタカナ以外では登録できない" do
       @user.last_name = "aaaaaa"
