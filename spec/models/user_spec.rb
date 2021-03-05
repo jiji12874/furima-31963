@@ -88,8 +88,8 @@ require 'rails_helper'
       expect(@user.errors.full_messages).to include("Password is invalid")
      end
      it "passwordが全角では登録できない" do
-      @user.password = "aaaaaa"
-      @user.password_confirmation = "aaaaaa"
+      @user.password = "AAAA１１"
+      @user.password_confirmation = "AAAA１１"
       @user.valid?
       expect(@user.errors.full_messages).to include("Password is invalid")
      end
