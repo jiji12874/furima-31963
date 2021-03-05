@@ -6,15 +6,7 @@ require 'rails_helper'
   describe "ユーザー新規登録" do
     context '新規登録がうまくいくとき' do
       it "全ての値が入っている場合、登録できる" do
-        @user.nickname = "aaa"
-        @user.password = "123aaa"
-        @user.password_confirmation = @user.password
-        @user.birth_date = "1234-01-01"
-        @user.last_name = "山田"
-        @user.first_name = "太郎"
-        @user.last_name_kana = "ヤマダ"
-        @user.first_name_kana = "タロウ"
-        @user.valid?
+        expect(@user).to be_valid
       end
       it "nicknameが存在すれば登録できる" do
         @user.nickname = "aaa"
