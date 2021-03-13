@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index]
+
   def index
     @item = Item.new
-    # @purchase = Purchase.find(params[:room_id])
   end
 
   def new
