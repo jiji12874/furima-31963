@@ -9,61 +9,6 @@ RSpec.describe Item, type: :model do
       it '全ての値が入っている場合、登録できる' do
         expect(@item).to be_valid
       end
-
-      it '商品画像が存在すれば登録できる' do
-        @item.image = 'aaa'
-        @item.valid?
-      end
-
-      it '商品名が存在すれば登録できる' do
-        @item.name = 'aaa'
-        @item.valid?
-      end
-
-      it '商品の説明が存在すれば登録できる' do
-        @item.info = 'aaa'
-        @item.valid?
-      end
-
-      it 'カテゴリーの情報が存在すれば登録できる' do
-        @item.category_id = '2'
-        @item.valid?
-      end
-
-      it '商品の状態が存在すれば登録できる' do
-        @item.status_id = '2'
-        @item.valid?
-      end
-
-      it '配送料の負担についての情報が存在すれば登録できる' do
-        @item.cost_id = '2'
-        @item.valid?
-      end
-
-      it '発送元の地域についての情報が存在すれば登録できる' do
-        @item.prefecture_id = '2'
-        @item.valid?
-      end
-
-      it '発送までの日数についての情報が存在すれば登録できる' do
-        @item.day_id = '2'
-        @item.valid?
-      end
-
-      it '価格についての情報が存在すれば登録できる' do
-        @item.price = '1000'
-        @item.valid?
-      end
-
-      it '価格の範囲は、¥300~¥9,999,999の間であれば登録できる' do
-        @item.price = '1000'
-        @item.valid?
-      end
-
-      it '販売価格は半角数字のみであれば登録できる' do
-        @item.price = '1000'
-        @item.valid?
-      end
     end
 
     context '商品出品がうまくいかないとき' do
