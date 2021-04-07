@@ -17,14 +17,14 @@ class ItemsController < ApplicationController
        redirect_to root_path
       else
         render :new
-      end
     end
+  end
     
-    def show
+  def show
       
-    end
+  end
     
-    def destroy
+  def destroy
       @item.destroy
       redirect_to root_path
 
@@ -58,4 +58,5 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
+  
 end
