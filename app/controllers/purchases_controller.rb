@@ -1,7 +1,8 @@
 class PurchasesController < ApplicationController
-  before_action :set_item, only: [:index, :create]
+  before_action :set_item, only: [:index, :create, :edit]
   before_action :authenticate_user!
-
+  before_action :url_refuse, only: [:index]
+  before_action :soldout_refuse, only: [:index, :edit]
 
   def index
     @purchase_address = PurchaseAddress.new
@@ -18,6 +19,10 @@ class PurchasesController < ApplicationController
     end
   end
 
+  def edit
+
+  end
+
   private
   def purchase_address_params
     params.require(:purchase_address).permit(:postal, :city, :prefecture_id, :addresses, :phone_number, :building_name, :token)
@@ -26,6 +31,18 @@ class PurchasesController < ApplicationController
   
   def set_item
     @item = Item.find(params[:item_id])
+  end
+
+  def url_refuse
+    if current_user == @item.user
+      redirect_to root_path
+    end
+  end
+
+  def soldout_refuse
+    if @item.purchase.present?
+      redirect_to root_path
+    end
   end
 
   def pay_item
