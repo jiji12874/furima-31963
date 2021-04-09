@@ -1,7 +1,7 @@
 class PurchasesController < ApplicationController
   before_action :set_item, only: [:index, :create, :edit]
   before_action :authenticate_user!
-  before_action :url_refuse, only: [:index]
+  before_action :url_refuse, only: [:index,:create]
   before_action :soldout_refuse, only: [:index, :edit]
 
   def index
