@@ -20,6 +20,10 @@ describe '商品購入機能' do
       expect(@purchase_address).to be_valid
     end
     
+    it '建物名が抜けていても登録できる' do
+      expect(@purchase_address).to be_valid
+    end
+    
   end
 
   context '商品購入がうまくいかないとき' do
@@ -54,7 +58,7 @@ describe '商品購入機能' do
     end
 
     it '都道府県が1以外でないと登録できないこと' do
-      @purchase_address.prefecture_id = '1'
+      @purchase_address.prefecture_id = 1
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Prefecture_id is invalid")
     end
@@ -78,13 +82,13 @@ describe '商品購入機能' do
     end
 
     it '電話番号が12桁以上では登録できないこと' do
-      @purchase_address.phone_number = '000-0000-0000-0000'
+      @purchase_address.phone_number = '000000000000000'
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Phone_number is invalid")
     end
 
     it '電話番号が英数混合では登録できないこと' do
-      @purchase_address.phone_number = '000-aaaa-0000'
+      @purchase_address.phone_number = '000aaaa0000'
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Phone_number is invalid")
     end
