@@ -19,10 +19,6 @@ class PurchasesController < ApplicationController
     end
   end
 
-  def edit
-
-  end
-
   private
   def purchase_address_params
     params.require(:purchase_address).permit(:postal, :city, :prefecture_id, :addresses, :phone_number, :building_name, :token)
