@@ -5,7 +5,7 @@ const pay = () => {
     e.preventDefault();
     const formResult = document.getElementById("charge-form");
     const formData = new FormData(formResult);
-console.log(form)
+
     const card = {
       number: formData.get("purchase_address[card_number]"),
       cvc: formData.get("purchase_address[card_cvc]"),
